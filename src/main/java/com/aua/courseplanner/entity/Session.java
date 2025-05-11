@@ -18,7 +18,7 @@ public class Session {
     // Use a JSON column to store the conversation
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
-    private String messages;   // JSON array string (role, content, parts)
+    private String messages;
 
     public Session() {
         this.sessionID = UUID.randomUUID();

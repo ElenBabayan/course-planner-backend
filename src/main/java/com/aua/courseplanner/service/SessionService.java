@@ -30,6 +30,6 @@ public class SessionService {
     public String getSessionMessages(UUID sessionId) {
         Session session = sessionRepo.findById(sessionId)
                 .orElseThrow(() -> new NoSuchElementException("Session not found"));
-        return session.getMessages();  // returns the JSON string of messages
+        return session.getMessages();
     }
 }

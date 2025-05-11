@@ -29,7 +29,6 @@ public class SessionController {
     public ResponseEntity<Map<String, UUID>> createSession() {
         Session newSession = sessionService.createNewSession();
         UUID id = newSession.getSessionID();
-        // Return the sessionID in JSON format
         return ResponseEntity.ok(Collections.singletonMap("sessionID", id));
     }
 
@@ -40,7 +39,6 @@ public class SessionController {
     @GetMapping("/{sessionID}")
     public ResponseEntity<String> getSessionMessages(@PathVariable UUID sessionID) {
         String messagesJson = sessionService.getSessionMessages(sessionID);
-        // Return the JSON string of messages with content type application/json
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_TYPE, "application/json")
                 .body(messagesJson);
     }

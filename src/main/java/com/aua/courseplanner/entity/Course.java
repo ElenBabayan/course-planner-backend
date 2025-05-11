@@ -31,5 +31,5 @@ public class Course {
 
     @ManyToMany(mappedBy = "courses")
     @JsonIgnore
-    private Set<Student> students = new HashSet<>();  // students who have completed this course
+    private Set<Student> students = new HashSet<>();
 }
