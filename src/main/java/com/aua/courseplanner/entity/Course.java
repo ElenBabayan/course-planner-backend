@@ -20,8 +20,8 @@ public class Course {
     private Long courseID;
 
     private String name;
-    private Date startdate;
-    private Date enddate;
+    private Date startDate;
+    private Date endDate;
     private int credits;
 
     // Self-referential many-to-one relationship for prerequisite

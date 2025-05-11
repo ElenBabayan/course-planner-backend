@@ -19,12 +19,11 @@ public class Student {
 
     private String name;
 
-    // Many-to-many relationship to Course through Student_Course join table
     @ManyToMany
     @JoinTable(
             name = "Student_Course",
             joinColumns = @JoinColumn(name = "studentID"),
             inverseJoinColumns = @JoinColumn(name = "courseID")
     )
-    private Set<Course> courses = new HashSet<>();  // courses the student has completed
+    private Set<Course> courses = new HashSet<>();
 }

@@ -8,7 +8,7 @@ INSERT INTO Student(name) VALUES
 
 -- ---------- 30 courses ----------
 -- Foundation block
-INSERT INTO Course(courseID,name,prerequisiteID,startdate,enddate,credits) VALUES
+INSERT INTO Course(courseID,name,prerequisiteID,startDate,endDate,credits) VALUES
                                                                                (101,'Intro to Computer Science',NULL,'2025-09-01','2025-12-15',4),
                                                                                (102,'Data Structures',101,'2025-09-01','2025-12-15',4),
                                                                                (103,'Algorithms',102,'2026-01-10','2026-05-20',4),

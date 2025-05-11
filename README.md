@@ -61,8 +61,8 @@ GET /university/availableCourses/2
   {
     "courseID": 103,
     "name": "Algorithms",
-    "startdate": "2026-01-10",
-    "enddate": "2026-05-20",
+    "startDate": "2026-01-10",
+    "endDate": "2026-05-20",
     "credits": 4,
     "prerequisite": {
       "courseID": 102,
@@ -72,8 +72,8 @@ GET /university/availableCourses/2
   {
     "courseID": 105,
     "name": "English Literature II",
-    "startdate": "2026-01-10",
-    "enddate": "2026-05-20",
+    "startDate": "2026-01-10",
+    "endDate": "2026-05-20",
     "credits": 3,
     "prerequisite": {
       "courseID": 111,

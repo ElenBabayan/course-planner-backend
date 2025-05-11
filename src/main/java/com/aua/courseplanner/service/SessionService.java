@@ -20,15 +20,7 @@ public class SessionService {
      * Create a new session with an initial system prompt message.
      */
     public Session createNewSession() {
-        // Initialize session with the system prompt message (Gemini prompt)
-        String initialMessages = """
-                [ {
-                     "role": "system",
-                     "content": "You are a university assistant. Based on the list of Courses and StudentProfile, generate an optimized SemesterPlan for the student.",
-                     "parts": []
-                   } ]
-                """;
-        Session session = new Session(initialMessages);
+        Session session = new Session();
         return sessionRepo.save(session);
     }
 
