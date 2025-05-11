@@ -1,0 +1,17 @@
+# Spring Boot application configuration file
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/universitydb
+    username: planner
+    password: planner
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+logging:
+  level:
+    org.hibernate.SQL: debug
+    org.hibernate.type.descriptor.sql: trace
