@@ -1,5 +1,6 @@
 package com.aua.courseplanner.entity;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -18,11 +19,13 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseID;
-
+    // Added Semester
     private String name;
+    private int semester;
     private Date startDate;
     private Date endDate;
     private int credits;
+
 
     // Self-referential many-to-one relationship for prerequisite
     @ManyToOne

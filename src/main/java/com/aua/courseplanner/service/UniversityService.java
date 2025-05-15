@@ -5,6 +5,7 @@ import com.aua.courseplanner.entity.Student;
 import com.aua.courseplanner.repository.CourseRepository;
 import com.aua.courseplanner.repository.StudentRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -39,12 +40,15 @@ public class UniversityService {
                 .map(Course::getCourseID)
                 .collect(Collectors.toSet());
 
+        //Added a minor addition to code that checks if the course is currently available (not in the past that is)
+
         return courseRepo.findAll()
                 .stream()
                 .filter(course ->
                         !completedCourseIds.contains(course.getCourseID()) &&
                                 (course.getPrerequisite() == null ||
-                                        completedCourseIds.contains(course.getPrerequisite().getCourseID()))
+                                        completedCourseIds.contains(course.getPrerequisite().getCourseID()) &&
+                                                (course.getStartDate().after(new Date())))
                 )
                 .toList();
     }
