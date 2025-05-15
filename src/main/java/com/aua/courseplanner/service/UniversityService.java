@@ -26,7 +26,7 @@ public class UniversityService {
 
     /**
      * Get the list of courses available to the given student.
-     * Exclude courses the student has already completed and
+     * Exclude courses the student has already completed or expired and
      * filters out courses whose prerequisites are not yet satisfied.
      */
     @Transactional(readOnly = true)
@@ -40,7 +40,6 @@ public class UniversityService {
                 .map(Course::getCourseID)
                 .collect(Collectors.toSet());
 
-        //Added a minor addition to code that checks if the course is currently available (not in the past that is)
 
         return courseRepo.findAll()
                 .stream()

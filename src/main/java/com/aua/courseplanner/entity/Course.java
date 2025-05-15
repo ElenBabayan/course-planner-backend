@@ -19,7 +19,6 @@ public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long courseID;
-    // Added Semester
     private String name;
     private int semester;
     private Date startDate;
