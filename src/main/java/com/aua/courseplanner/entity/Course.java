@@ -51,4 +51,8 @@ public class Course {
         this.credits = credits;
         this.prerequisite = prerequisite;
     }
+
+    public Course() {
+        // Default constructor
+    }
 }

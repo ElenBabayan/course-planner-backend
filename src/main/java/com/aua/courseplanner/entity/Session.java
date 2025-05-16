@@ -27,9 +27,4 @@ public class Session {
         this.sessionID = UUID.randomUUID();
         this.messages = "[]";  // default to empty JSON array
     }
-
-    public Session(String initialMessagesJson) {
-        this.sessionID = UUID.randomUUID();
-        this.messages = initialMessagesJson;
-    }
 }
