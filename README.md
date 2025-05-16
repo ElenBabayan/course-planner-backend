@@ -122,3 +122,26 @@ GET /session/550e8400-e29b-41d4-a716-446655440000
   }
 ]
 ```
+
+### 📘 API Documentation
+
+Once the app is running, open:  
+→ [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+
+This displays interactive API docs powered by **Swagger UI** and **OpenAPI 3**.
+
+**Features:**
+- Auto-generated from Spring annotations (`@RestController`, `@RequestMapping`, etc.)
+- Includes request/response models
+- Shows HTTP methods and example payloads
+- Documents query and path parameters
+
+The OpenAPI spec is also available in raw JSON:  
+→ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+
+
+### 🔄 Docker Compose (one-liner)
+
+```bash
+# build the image, start Postgres and the app
+docker compose up --build
