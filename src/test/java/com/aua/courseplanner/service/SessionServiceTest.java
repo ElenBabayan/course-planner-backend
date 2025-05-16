@@ -12,13 +12,18 @@ import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.any;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class SessionServiceTest {
-    @Mock SessionRepository sessionRepo;
-    @InjectMocks SessionService sessionService;
+    @Mock
+    SessionRepository sessionRepo;
+    @InjectMocks
+    SessionService sessionService;
 
     @Test
     void createNewSession_savesAndReturnsSession() {

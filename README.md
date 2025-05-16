@@ -3,25 +3,27 @@
 Java 21 / Spring Boot 3 service that powers the **Student Course Planner** (Gemini-driven) web app.
 
 ## Features
+
 * PostgreSQL **UniversityDB** – students, courses, enrollments
 * PostgreSQL **ApplicationDB** – chat sessions (`JSONB` column)  
   *(same Postgres instance but isolated database for clarity)*
 * REST endpoints
     * `GET /university/availableCourses/{studentID}` – list courses a student can legally take next
     * `POST /session/createSession` – new chat session (Gemini prompt pre-loaded)
-    * `GET  /session/{sessionID}` – retrieve session messages
+    * `GET /session/{sessionID}` – retrieve session messages
 * Layered architecture (Controller → Service → Repository) with JPA entities
 * Unit tests (JUnit 5, Mockito)
 * Flyway migrations and `data.sql` with **20 students, 30 courses** seeded
 
 ## Tech Stack
-| Area      | Library / Tool |
-|-----------|----------------|
-| Language  | Java 21        |
-| Framework | Spring Boot 3.4 |
+
+| Area      | Library / Tool                                              |
+|-----------|-------------------------------------------------------------|
+| Language  | Java 21                                                     |
+| Framework | Spring Boot 3.4                                             |
 | Data      | PostgreSQL 16, Hibernate 6 (JSONB via `hibernate-types-60`) |
-| Build     | Maven          |
-| Tests     | JUnit 5, Mockito |
+| Build     | Maven                                                       |
+| Tests     | JUnit 5, Mockito                                            |
 
 ## Quick start (local dev)
 
@@ -47,15 +49,18 @@ psql -U planner -d applicationdb   -f src/main/resources/schema-application.sql
 ### `GET /university/availableCourses/{studentID}`
 
 Returns a list of courses that the student **can take next**, based on:
+
 - Courses not yet completed
 - Prerequisite rules
 
 **Example**:
+
 ```http
 GET /university/availableCourses/2
 ```
 
 **Response:**
+
 ```json
 [
   {
@@ -90,11 +95,13 @@ GET /university/availableCourses/2
 Creates a **new chat session** and returns a `sessionID`.
 
 **Request:**
+
 ```http
 POST /session/createSession
 ```
 
 **Response:**
+
 ```json
 {
   "sessionID": "550e8400-e29b-41d4-a716-446655440000"
@@ -108,11 +115,13 @@ POST /session/createSession
 Retrieves the **entire message history** for the specified session.
 
 **Request:**
+
 ```http
 GET /session/550e8400-e29b-41d4-a716-446655440000
 ```
 
 **Response:**
+
 ```json
 [
   {
@@ -131,6 +140,7 @@ Once the app is running, open:
 This displays interactive API docs powered by **Swagger UI** and **OpenAPI 3**.
 
 **Features:**
+
 - Auto-generated from Spring annotations (`@RestController`, `@RequestMapping`, etc.)
 - Includes request/response models
 - Shows HTTP methods and example payloads
@@ -138,7 +148,6 @@ This displays interactive API docs powered by **Swagger UI** and **OpenAPI 3**.
 
 The OpenAPI spec is also available in raw JSON:  
 → [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
-
 
 ### 🔄 Docker Compose (one-liner)
 

@@ -16,25 +16,29 @@ import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class UniversityServiceTest {
-    @Mock StudentRepository studentRepo;
-    @Mock CourseRepository courseRepo;
+    @Mock
+    StudentRepository studentRepo;
+    @Mock
+    CourseRepository courseRepo;
 
-    @InjectMocks UniversityService universityService;
+    @InjectMocks
+    UniversityService universityService;
 
     Course ds, algo, englishI, englishII;
     Student student;
 
     @BeforeEach
     void setUp() {
-        ds       = new Course(102L, "Data Structures", null, null,3, null);
-        algo     = new Course(103L, "Algorithms", null, null, 4, ds);
+        ds = new Course(102L, "Data Structures", null, null, 3, null);
+        algo = new Course(103L, "Algorithms", null, null, 4, ds);
         englishI = new Course(111L, "English Literature I", null, null, 3, null);
-        englishII= new Course(105L, "English Literature II", null, null,3, englishI);
+        englishII = new Course(105L, "English Literature II", null, null, 3, englishI);
 
         student = new Student();
         student.setStudentID(1L);

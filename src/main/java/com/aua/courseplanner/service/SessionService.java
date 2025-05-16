@@ -2,11 +2,10 @@ package com.aua.courseplanner.service;
 
 import com.aua.courseplanner.entity.Session;
 import com.aua.courseplanner.repository.SessionRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.NoSuchElementException;
 import java.util.UUID;
-
-import org.springframework.stereotype.Service;
 
 @Service
 public class SessionService {

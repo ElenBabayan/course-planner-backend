@@ -1,1 +1,2 @@
-CREATE DATABASE applicationdb;
+CREATE
+DATABASE applicationdb;
