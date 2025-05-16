@@ -15,6 +15,7 @@ import lombok.Setter;
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "student_id")
     private Long studentID;
 
     private String name;
@@ -22,8 +23,8 @@ public class Student {
     @ManyToMany
     @JoinTable(
             name = "Student_Course",
-            joinColumns = @JoinColumn(name = "studentID"),
-            inverseJoinColumns = @JoinColumn(name = "courseID")
+            joinColumns = @JoinColumn(name = "student_id"),
+            inverseJoinColumns = @JoinColumn(name = "course_id")
     )
     private Set<Course> courses = new HashSet<>();
 }

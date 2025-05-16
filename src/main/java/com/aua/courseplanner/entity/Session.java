@@ -13,7 +13,8 @@ import org.hibernate.type.SqlTypes;
 @Data
 public class Session {
     @Id
-    private UUID sessionID;   // Use UUID for unique session identifiers
+    @Column(name = "session_id")
+    private UUID sessionID;
 
     // Use a JSON column to store the conversation
     @JdbcTypeCode(SqlTypes.JSON)
