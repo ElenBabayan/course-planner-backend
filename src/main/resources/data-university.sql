@@ -22,40 +22,40 @@ VALUES ('Alice Johnson'),
        ('Tara Nguyen');
 
 -- ---------- 30 courses ----------
-INSERT INTO course(course_id, name, prerequisite_id, start_date, end_date, credits)
-VALUES (101, 'Intro to Computer Science', NULL, '2025-09-01', '2025-12-15', 4),
-       (102, 'Data Structures', 101, '2025-09-01', '2025-12-15', 4),
-       (103, 'Algorithms', 102, '2026-01-10', '2026-05-20', 4),
-       (104, 'Computer Organization', 101, '2025-09-01', '2025-12-15', 3),
-       (105, 'Operating Systems', 104, '2026-01-10', '2026-05-20', 4),
-       (106, 'Databases', 102, '2026-01-10', '2026-05-20', 4),
-       (107, 'Networks', 104, '2026-01-10', '2026-05-20', 3),
-       (108, 'Software Engineering', 102, '2026-01-10', '2026-05-20', 4),
-       (109, 'Artificial Intelligence', 103, '2026-08-25', '2026-12-10', 4),
-       (110, 'Machine Learning', 109, '2027-01-09', '2027-05-18', 4),
+INSERT INTO course(course_id, name, prerequisite_id, start_date, end_date, credits, semester)
+VALUES (101, 'Intro to Computer Science', NULL, '2025-09-01', '2025-12-15', 4, 1),
+       (102, 'Data Structures', 101, '2025-09-01', '2025-12-15', 4, 3),
+       (103, 'Algorithms', 102, '2026-01-10', '2026-05-20', 4, 2),
+       (104, 'Computer Organization', 101, '2025-09-01', '2025-12-15', 3, 3),
+       (105, 'Operating Systems', 104, '2026-01-10', '2026-05-20', 4, 3),
+       (106, 'Databases', 102, '2026-01-10', '2026-05-20', 4, 2),
+       (107, 'Networks', 104, '2026-01-10', '2026-05-20', 3, 2),
+       (108, 'Software Engineering', 102, '2026-01-10', '2026-05-20', 4, 1)
+       (109, 'Artificial Intelligence', 103, '2026-08-25', '2026-12-10', 4, 1),
+       (110, 'Machine Learning', 109, '2027-01-09', '2027-05-18', 4, 2),
 
-       (111, 'English Literature I', NULL, '2025-09-01', '2025-12-15', 3),
-       (112, 'English Literature II', 111, '2026-01-10', '2026-05-20', 3),
-       (113, 'World History', NULL, '2025-09-01', '2025-12-15', 3),
-       (114, 'Philosophy 101', NULL, '2025-09-01', '2025-12-15', 3),
-       (115, 'Ethics in Technology', 114, '2026-01-10', '2026-05-20', 3),
+       (111, 'English Literature I', NULL, '2025-09-01', '2025-12-15', 3, 1),
+       (112, 'English Literature II', 111, '2026-01-10', '2026-05-20', 3, 1),
+       (113, 'World History', NULL, '2025-09-01', '2025-12-15', 3, 1),
+       (114, 'Philosophy 101', NULL, '2025-09-01', '2025-12-15', 3, 3),
+       (115, 'Ethics in Technology', 114, '2026-01-10', '2026-05-20', 3, 4),
 
-       (116, 'Calculus I', NULL, '2025-09-01', '2025-12-15', 4),
-       (117, 'Calculus II', 116, '2026-01-10', '2026-05-20', 4),
-       (118, 'Linear Algebra', 116, '2026-01-10', '2026-05-20', 4),
-       (119, 'Statistics', 116, '2025-09-01', '2025-12-15', 3),
-       (120, 'Discrete Mathematics', 101, '2025-09-01', '2025-12-15', 4),
+       (116, 'Calculus I', NULL, '2025-09-01', '2025-12-15', 4, 4),
+       (117, 'Calculus II', 116, '2026-01-10', '2026-05-20', 4, 4),
+       (118, 'Linear Algebra', 116, '2026-01-10', '2026-05-20', 4, 4),
+       (119, 'Statistics', 116, '2025-09-01', '2025-12-15', 3, 4),
+       (120, 'Discrete Mathematics', 101, '2025-09-01', '2025-12-15', 4, 2),
 
-       (121, 'Intro to Psychology', NULL, '2025-09-01', '2025-12-15', 3),
-       (122, 'Microeconomics', NULL, '2025-09-01', '2025-12-15', 3),
-       (123, 'Macroeconomics', 122, '2026-01-10', '2026-05-20', 3),
-       (124, 'Digital Marketing', NULL, '2025-09-01', '2025-12-15', 3),
-       (125, 'Graphic Design Basics', NULL, '2025-09-01', '2025-12-15', 3),
-       (126, 'User Experience Design', 125, '2026-01-10', '2026-05-20', 3),
-       (127, 'Project Management', 108, '2026-08-25', '2026-12-10', 3),
-       (128, 'Cloud Computing', 105, '2026-08-25', '2026-12-10', 4),
-       (129, 'Cybersecurity Fundamentals', 104, '2026-08-25', '2026-12-10', 3),
-       (130, 'Data Visualization', 118, '2026-08-25', '2026-12-10', 3);
+       (121, 'Intro to Psychology', NULL, '2025-09-01', '2025-12-15', 3, 1),
+       (122, 'Microeconomics', NULL, '2025-09-01', '2025-12-15', 3, 1),
+       (123, 'Macroeconomics', 122, '2026-01-10', '2026-05-20', 3, 2),
+       (124, 'Digital Marketing', NULL, '2025-09-01', '2025-12-15', 3, 2),
+       (125, 'Graphic Design Basics', NULL, '2025-09-01', '2025-12-15', 3, 2),
+       (126, 'User Experience Design', 125, '2026-01-10', '2026-05-20', 3, 2),
+       (127, 'Project Management', 108, '2026-08-25', '2026-12-10', 3, 2),
+       (128, 'Cloud Computing', 105, '2026-08-25', '2026-12-10', 4, 4),
+       (129, 'Cybersecurity Fundamentals', 104, '2026-08-25', '2026-12-10', 3, 1),
+       (130, 'Data Visualization', 118, '2026-08-25', '2026-12-10', 3, 2);
 
 -- ---------- Student_Course (sample completions) ----------
 INSERT INTO student_course
