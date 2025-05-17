@@ -1,7 +1,5 @@
--- ---------- ApplicationDB schema ----------
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
-
-CREATE TABLE IF NOT EXISTS Session (
-                                       sessionID UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-    messages  JSONB NOT NULL
-    );
+CREATE TABLE IF NOT EXISTS session
+(
+    session_id UUID PRIMARY KEY,
+    messages   JSONB NOT NULL
+);
