@@ -2,6 +2,7 @@ CREATE TABLE IF NOT EXISTS Course (
                                       courseID       BIGSERIAL PRIMARY KEY,
                                       name           VARCHAR(100) NOT NULL,
     prerequisiteID BIGINT REFERENCES Course(courseID),
+    semester       INT,
     startDate      TIMESTAMP,
     endDate        TIMESTAMP,
     credits        INT

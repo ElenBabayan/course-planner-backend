@@ -5,6 +5,7 @@ import com.aua.courseplanner.entity.Student;
 import com.aua.courseplanner.repository.CourseRepository;
 import com.aua.courseplanner.repository.StudentRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -25,7 +26,7 @@ public class UniversityService {
 
     /**
      * Get the list of courses available to the given student.
-     * Exclude courses the student has already completed and
+     * Exclude courses the student has already completed or expired and
      * filters out courses whose prerequisites are not yet satisfied.
      */
     @Transactional(readOnly = true)
@@ -39,12 +40,14 @@ public class UniversityService {
                 .map(Course::getCourseID)
                 .collect(Collectors.toSet());
 
+
         return courseRepo.findAll()
                 .stream()
                 .filter(course ->
                         !completedCourseIds.contains(course.getCourseID()) &&
                                 (course.getPrerequisite() == null ||
-                                        completedCourseIds.contains(course.getPrerequisite().getCourseID()))
+                                        completedCourseIds.contains(course.getPrerequisite().getCourseID()) &&
+                                                (course.getStartDate().after(new Date())))
                 )
                 .toList();
     }
