@@ -59,9 +59,18 @@ class UniversityServiceTest {
     }
 
     @Test
+    void returnsEmptyList_whenNoCoursesAvailable() {
+        when(studentRepo.findByIdWithCourses(1L)).thenReturn(Optional.of(student));
+        // All repo courses are already completed by student
+        when(courseRepo.findAll()).thenReturn(List.of(ds));
+
+        List<Course> result = universityService.getAvailableCoursesForStudent(1L);
+        assertThat(result).isEmpty();
+    }
+
+    @Test
     void throwsWhenStudentNotFound() {
         when(studentRepo.findByIdWithCourses(99L)).thenReturn(Optional.empty());
-
         assertThatThrownBy(() -> universityService.getAvailableCoursesForStudent(99L))
                 .isInstanceOf(EntityNotFoundException.class)
                 .hasMessageContaining("Student not found");
