@@ -15,7 +15,8 @@ CREATE TABLE IF NOT EXISTS course
 ),
     start_date TIMESTAMP,
     end_date TIMESTAMP,
-    credits INT
+    credits INT,
+    semester INT
     );
 
 CREATE TABLE IF NOT EXISTS student
