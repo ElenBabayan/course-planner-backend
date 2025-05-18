@@ -1,0 +1,29 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: course-planner-postgres
+    environment:
+      POSTGRES_USER: planner
+      POSTGRES_PASSWORD: planner
+      POSTGRES_DB: universitydb        # primary DB
+    volumes:
+      - ./docker/postgres/init-multiple-db.sql:/docker-entrypoint-initdb.d/init-multiple-db.sql
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    container_name: course-planner-app
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/universitydb
+      SPRING_DATASOURCE_USERNAME: planner
+      SPRING_DATASOURCE_PASSWORD: planner
+      SPRING_SECOND_DATASOURCE_URL: jdbc:postgresql://db:5432/applicationdb
+      SPRING_SECOND_DATASOURCE_USERNAME: planner
+      SPRING_SECOND_DATASOURCE_PASSWORD: planner
+    ports:
+      - "8080:8080"
