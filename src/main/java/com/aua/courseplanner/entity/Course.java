@@ -23,6 +23,11 @@ public class Course {
     private int semester;
     private Date startDate;
     private Date endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "schedule")
+    private Schedule schedule;
+
     private int credits;
 
 
