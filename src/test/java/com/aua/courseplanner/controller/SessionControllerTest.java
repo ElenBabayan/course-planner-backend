@@ -1,6 +1,7 @@
 package com.aua.courseplanner.controller;
 
 
+import com.aua.courseplanner.dto.MessageRequest;
 import com.aua.courseplanner.entity.Session;
 import com.aua.courseplanner.service.SessionService;
 import org.junit.jupiter.api.Test;
@@ -40,7 +41,8 @@ class SessionControllerTest {
     @Test
     void getSessionMessages_returnsJsonArray() throws Exception {
         UUID id = UUID.randomUUID();
-        when(sessionService.getSessionMessages(id)).thenReturn("[]");
+        MessageRequest messageRequest = new MessageRequest();
+        when(sessionService.getSessionMessages(id)).thenReturn(messageRequest);
 
         mvc.perform(get("/session/" + id))
                 .andExpect(status().isOk())

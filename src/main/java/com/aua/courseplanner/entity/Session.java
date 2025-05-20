@@ -1,5 +1,6 @@
 package com.aua.courseplanner.entity;
 
+import com.aua.courseplanner.dto.MessageRequest;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
@@ -21,10 +22,10 @@ public class Session {
     // Use a JSON column to store the conversation
     @JdbcTypeCode(SqlTypes.JSON)
     @Column(columnDefinition = "jsonb")
-    private String messages;
+    private MessageRequest messages;
 
     public Session() {
         this.sessionID = UUID.randomUUID();
-        this.messages = "[]";  // default to empty JSON array
+        this.messages = new MessageRequest();
     }
 }

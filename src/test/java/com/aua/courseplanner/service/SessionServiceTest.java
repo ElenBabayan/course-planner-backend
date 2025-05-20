@@ -1,5 +1,6 @@
 package com.aua.courseplanner.service;
 
+import com.aua.courseplanner.dto.MessageRequest;
 import com.aua.courseplanner.entity.Session;
 import com.aua.courseplanner.repository.SessionRepository;
 import org.junit.jupiter.api.Test;
@@ -38,14 +39,15 @@ class SessionServiceTest {
 
     @Test
     void getSessionMessages_returnsJson() {
+        MessageRequest messageRequest = new MessageRequest();
         UUID id = UUID.randomUUID();
         Session s = new Session();
         s.setSessionID(id);
-        s.setMessages("[]");
+        s.setMessages(messageRequest);
         when(sessionRepo.findById(id)).thenReturn(Optional.of(s));
 
-        String json = sessionService.getSessionMessages(id);
-        assertThat(json).isEqualTo("[]");
+        MessageRequest json = sessionService.getSessionMessages(id);
+        assertThat(json).isEqualTo(messageRequest);
     }
 
     @Test
