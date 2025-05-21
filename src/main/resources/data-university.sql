@@ -9,16 +9,18 @@ INSERT INTO student(name) VALUES
 
 
 
-
-
 -- ---------- 5 schedules ----------
    INSERT INTO schedule (starts_at, ends_at) VALUES
    ('09:00:00', '10:30:00'),  -- id 1
-   ('10:45:00', '12:15:00'),  -- id 2
-   ('13:00:00', '14:30:00'),  -- id 3
-   ('15:00:00', '16:30:00'),  -- id 4
-   ('17:00:00', '18:30:00');  -- id 5
-
+   ('09:00:00', '10:30:00'),  -- id 2
+   ('10:45:00', '12:15:00'),  -- id 3
+   ('10:45:00', '12:15:00'),  -- id 4
+   ('13:00:00', '14:30:00'),  -- id 5
+   ('13:00:00', '14:30:00'),  -- id 6
+   ('15:00:00', '16:30:00'),  -- id 7
+   ('15:00:00', '16:30:00'),  -- id 8
+   ('17:00:00', '18:30:00');  -- id 9
+   ('17:00:00', '18:30:00');  -- id 10
 -- ---------- 5 schedule days ----------
 INSERT INTO schedule_days (schedule_id, day_of_week) VALUES
     (1, 'MONDAY'), (1, 'WEDNESDAY'), (1, 'FRIDAY'),
@@ -26,48 +28,50 @@ INSERT INTO schedule_days (schedule_id, day_of_week) VALUES
     (3, 'MONDAY'), (3, 'WEDNESDAY'), (3, 'FRIDAY')
     (4, 'TUESDAY'), (4, 'THURSDAY')
     (5, 'MONDAY'), (5, 'WEDNESDAY'), (5, 'FRIDAY')
+    (6, 'MONDAY'), (6, 'WEDNESDAY'), (6, 'FRIDAY'),
+    (7, 'TUESDAY'), (7, 'THURSDAY'),
+    (8, 'MONDAY'), (8, 'WEDNESDAY'), (8, 'FRIDAY')
+    (9, 'TUESDAY'), (9, 'THURSDAY')
+    (10, 'MONDAY'), (10, 'WEDNESDAY'), (10, 'FRIDAY')
+
+
 
 -- ---------- 30 courses ----------
 -- Foundation block
-INSERT INTO Course(courseID,name,prerequisiteID,startDate,endDate,credits) VALUES
+INSERT INTO course(course_id, name, prerequisite_id, start_date, end_date, credits, semester, course_schedule)
+VALUES (101, 'Intro to Computer Science', NULL, '2025-09-01', '2025-12-15', 4, 1,1),
+       (102, 'Data Structures', 101, '2025-09-01', '2025-12-15', 4, 3,2),
+       (103, 'Algorithms', 102, '2026-01-10', '2026-05-20', 4, 2,1),
+       (104, 'Computer Organization', 101, '2025-09-01', '2025-12-15', 3, 3,2),
+       (105, 'Operating Systems', 104, '2026-01-10', '2026-05-20', 4, 3,3),
+       (106, 'Databases', 102, '2026-01-10', '2026-05-20', 4, 2,1),
+       (107, 'Networks', 104, '2026-01-10', '2026-05-20', 3, 2,4),
+       (108, 'Software Engineering', 102, '2026-01-10', '2026-05-20', 4, 5),
+       (109, 'Artificial Intelligence', 103, '2026-08-25', '2026-12-10', 4, 4),
+       (110, 'Machine Learning', 109, '2027-01-09', '2027-05-18', 4, 2,1),
 
--- As per requirement added semesters and schedule
-                                                                               (101,'Intro to Computer Science',NULL,1,'2025-09-01','2025-12-15',1,4),
-                                                                               (102,'Data Structures',101,1,'2025-09-01','2025-12-15',2,4),
-                                                                               (103,'Algorithms',102,2,'2026-01-10','2026-05-20',1,4),
-                                                                               (104,'Computer Organization',101,1,'2025-09-01','2025-12-15',2,3),
-                                                                               (105,'Operating Systems',104,2,'2026-01-10','2026-05-20',4,4),
-                                                                               (106,'Databases',102,2,'2026-01-10','2026-05-20',3,4),
-                                                                               (107,'Networks',104,2,'2026-01-10','2026-05-20',5,3),
-                                                                               (108,'Software Engineering',102,2,'2026-01-10','2026-05-20',1,4),
-                                                                               (109,'Artificial Intelligence',103,1,'2026-08-25','2026-12-10',2,4),
-                                                                               (110,'Machine Learning',109,2,'2027-01-09','2027-05-18',1,4),
+       (111, 'English Literature I', NULL, '2025-09-01', '2025-12-15', 3, 1,1),
+       (112, 'English Literature II', 111, '2026-01-10', '2026-05-20', 3, 1,3),
+       (113, 'World History', NULL, '2025-09-01', '2025-12-15', 3, 1,9),
+       (114, 'Philosophy 101', NULL, '2025-09-01', '2025-12-15', 3, 3,10),
+       (115, 'Ethics in Technology', 114, '2026-01-10', '2026-05-20', 3, 4,5),
 
--- Humanities block
-                                                                               (111,'English Literature I',NULL,1,'2025-09-01','2025-12-15',1,3),
-                                                                               (112,'English Literature II',111,2,'2026-01-10','2026-05-20',1,3),
-                                                                               (113,'World History',NULL,1,'2025-09-01','2025-12-15',2,3),
-                                                                               (114,'Philosophy 101',NULL,1,'2025-09-01','2025-12-15',5,3),
-                                                                               (115,'Ethics in Technology',114,2,'2026-01-10','2026-05-20',5,3),
+       (116, 'Calculus I', NULL, '2025-09-01', '2025-12-15', 4, 4,1),
+       (117, 'Calculus II', 116, '2026-01-10', '2026-05-20', 4, 4,3),
+       (118, 'Linear Algebra', 116, '2026-01-10', '2026-05-20', 4, 4,2),
+       (119, 'Statistics', 116, '2025-09-01', '2025-12-15', 3, 4,4),
+       (120, 'Discrete Mathematics', 101, '2025-09-01', '2025-12-15', 4, 2,3),
 
--- Math / Science block
-                                                                               (116,'Calculus I',NULL,1,'2025-09-01','2025-12-15',1,4),
-                                                                               (117,'Calculus II',116,2,'2026-01-10','2026-05-20',1,4),
-                                                                               (118,'Linear Algebra',116,2,'2026-01-10','2026-05-20',2,4),
-                                                                               (119,'Statistics',116,1,'2025-09-01','2025-12-15',1,3),
-                                                                               (120,'Discrete Mathematics',101,1,'2025-09-01','2025-12-15',2,4),
-
--- Electives
-                                                                               (121,'Intro to Psychology',NULL,1,'2025-09-01','2025-12-15',4,3),
-                                                                               (122,'Microeconomics',NULL,1,'2025-09-01','2025-12-15',3,3),
-                                                                               (123,'Macroeconomics',122,2,'2026-01-10','2026-05-20',4,3),
-                                                                               (124,'Digital Marketing',NULL,1,'2025-09-01','2025-12-15',1,3),
-                                                                               (125,'Graphic Design Basics',NULL,1,'2025-09-01','2025-12-15',1,3),
-                                                                               (126,'User Experience Design',125,2,'2026-01-10','2026-05-20',3,3),
-                                                                               (127,'Project Management',108,1,'2026-08-25','2026-12-10',2,3),
-                                                                               (128,'Cloud Computing',105,1,'2026-08-25','2026-12-10',5,4),
-                                                                               (129,'Cybersecurity Fundamentals',104,1,'2026-08-25','2026-12-10',1,3),
-                                                                               (130,'Data Visualization',118,1,'2026-08-25','2026-12-10',2,3);
+       (121, 'Intro to Psychology', NULL, '2025-09-01', '2025-12-15', 3, 1,4),
+       (122, 'Microeconomics', NULL, '2025-09-01', '2025-12-15', 3, 1,6),
+       (123, 'Macroeconomics', 122, '2026-01-10', '2026-05-20', 3, 2,7),
+       (124, 'Digital Marketing', NULL, '2025-09-01', '2025-12-15', 3, 2,9),
+       (125, 'Graphic Design Basics', NULL, '2025-09-01', '2025-12-15', 3, 2,3),
+       (126, 'User Experience Design', 125, '2026-01-10', '2026-05-20', 3, 2,4),
+       (127, 'Project Management', 108, '2026-08-25', '2026-12-10', 3, 2,6),
+       (128, 'Cloud Computing', 105, '2026-08-25', '2026-12-10', 4, 4,7),
+       (129, 'Cybersecurity Fundamentals', 104, '2026-08-25', '2026-12-10', 3, 1,4),
+       (130, 'Data Visualization', 118, '2026-08-25', '2026-12-10', 3, 2,10);
 
 -- ---------- Sample Student_Course completions ----------
 -- Alice (1)
