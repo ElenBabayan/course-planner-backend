@@ -1,3 +1,5 @@
+server:
+  port: 8000
 # Spring Boot application configuration file
 spring:
   datasource:
@@ -15,3 +17,9 @@ logging:
   level:
     org.hibernate.SQL: debug
     org.hibernate.type.descriptor.sql: trace
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html
+  api-docs:
+    path: /v3/api-docs
+

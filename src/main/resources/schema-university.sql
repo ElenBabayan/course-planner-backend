@@ -16,8 +16,9 @@ CREATE TABLE IF NOT EXISTS course
     start_date TIMESTAMP,
     end_date TIMESTAMP,
     credits INT,
-    semester INT
+    semester INT,
     course_schedule schedule,
+
     );
 
 CREATE TABLE IF NOT EXISTS student
@@ -54,8 +55,6 @@ CREATE TABLE IF NOT EXISTS student_course
     );
 
 
-
-
 CREATE TABLE IF NOT EXISTS schedule{
     scheduleID BIGSERIAL PRIMARY KEY,
     startsAt TIME,
@@ -71,3 +70,4 @@ CREATE TABLE schedule_days (
     schedule_id BIGINT REFERENCES schedule(scheduleID),
     day_of_week days_of_week NOT NULL,
 );
+

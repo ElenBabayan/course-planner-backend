@@ -4,15 +4,14 @@ import com.aua.courseplanner.entity.Course;
 import com.aua.courseplanner.entity.Student;
 import com.aua.courseplanner.repository.CourseRepository;
 import com.aua.courseplanner.repository.StudentRepository;
+import jakarta.persistence.EntityNotFoundException;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
-
-import jakarta.persistence.EntityNotFoundException;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UniversityService {
