@@ -27,27 +27,31 @@ public class UniversityService {
      * Get the list of courses available to the given student.
      * Exclude courses the student has already completed or expired and
      * filters out courses whose prerequisites are not yet satisfied.
+     * Also fetch the schedule for each available course.
      */
     @Transactional(readOnly = true)
     public List<Course> getAvailableCoursesForStudent(Long studentId) {
         Student student = studentRepo.findByIdWithCourses(studentId)
-                .orElseThrow(() -> new EntityNotFoundException("Student not found"));
+            .orElseThrow(() -> new EntityNotFoundException("Student not found"));
 
-        // Extract completed course IDs
         Set<Long> completedCourseIds = student.getCourses()
-                .stream()
-                .map(Course::getCourseID)
-                .collect(Collectors.toSet());
-
+            .stream()
+            .map(Course::getCourseID)
+            .collect(Collectors.toSet());
 
         return courseRepo.findAll()
-                .stream()
-                .filter(course ->
-                        !completedCourseIds.contains(course.getCourseID()) &&
-                                (course.getPrerequisite() == null ||
-                                        completedCourseIds.contains(course.getPrerequisite().getCourseID()) &&
-                                                (course.getStartDate().after(new Date())))
-                )
-                .toList();
+            .stream()
+            .filter(course ->
+                !completedCourseIds.contains(course.getCourseID()) &&
+                    (course.getPrerequisite() == null ||
+                        completedCourseIds.contains(course.getPrerequisite().getCourseID())) &&
+                    (course.getStartDate().after(new Date()))
+            )
+            .peek(course -> {
+                if (course.getSchedule() != null) {
+                    course.getSchedule().getWeekdays();
+                }
+            })
+            .toList();
     }
 }

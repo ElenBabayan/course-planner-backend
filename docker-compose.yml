@@ -11,7 +11,7 @@ services:
     volumes:
       - ./docker/postgres/init-multiple-db.sql:/docker-entrypoint-initdb.d/init-multiple-db.sql
     ports:
-      - "5432:5432"
+      - "5433:5432"
 
   app:
     build: .

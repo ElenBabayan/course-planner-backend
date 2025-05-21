@@ -1,3 +1,8 @@
+DROP TABLE IF EXISTS course CASCADE;
+DROP TABLE IF EXISTS student CASCADE;
+DROP TABLE IF EXISTS student_course CASCADE;
+DROP TABLE IF EXISTS schedule CASCADE;
+
 CREATE TABLE IF NOT EXISTS course
 (
     course_id
@@ -17,8 +22,7 @@ CREATE TABLE IF NOT EXISTS course
     end_date TIMESTAMP,
     credits INT,
     semester INT,
-    course_schedule schedule,
-
+    course_schedule BIGSERIAL REFERENCES schedule(scheduleID)
     );
 
 CREATE TABLE IF NOT EXISTS student
@@ -33,6 +37,8 @@ CREATE TABLE IF NOT EXISTS student
     100
 ) NOT NULL
     );
+
+DROP TABLE IF EXISTS student_course CASCADE;
 
 CREATE TABLE IF NOT EXISTS student_course
 (
@@ -55,19 +61,11 @@ CREATE TABLE IF NOT EXISTS student_course
     );
 
 
-CREATE TABLE IF NOT EXISTS schedule{
+CREATE TABLE IF NOT EXISTS schedule
+(
     scheduleID BIGSERIAL PRIMARY KEY,
-    startsAt TIME,
-    endsAt TIME,
-}
-
-CREATE TYPE days_of_week AS ENUM (
-    'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY',
-    'FRIDAY', 'SATURDAY', 'SUNDAY'
-);
-
-CREATE TABLE schedule_days (
-    schedule_id BIGINT REFERENCES schedule(scheduleID),
-    day_of_week days_of_week NOT NULL,
+    starts_at TIME NOT NULL,
+    ends_at TIME NOT NULL,
+    weekdays TEXT[]
 );
 
