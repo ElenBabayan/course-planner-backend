@@ -5,6 +5,7 @@ import com.aua.courseplanner.entity.Session;
 import com.aua.courseplanner.repository.SessionRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.UUID;
 
@@ -31,6 +32,16 @@ public class SessionService {
         Session session = sessionRepo.findById(sessionId)
                 .orElseThrow(() -> new NoSuchElementException("Session not found"));
         return session.getMessages();
+    }
+
+    /**
+     * Get all session IDs.
+     */
+    public List<UUID> getAllSessionIDs() {
+        return sessionRepo.findAll()
+                .stream()
+                .map(Session::getSessionID)
+                .toList();
     }
 
     /**
