@@ -38,7 +38,7 @@ public class Course {
     private Date endDate;
 
     @ManyToOne
-    @JoinColumn(name = "schedule")
+    @JoinColumn(name = "course_schedule")
     private Schedule schedule;
 
     private int credits;
