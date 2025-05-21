@@ -1,5 +1,5 @@
 -- ---------- 20 students ----------
-INSERT INTO Student(name) VALUES
+INSERT INTO student(name) VALUES
                               ('Alice Johnson'),    ('Bob Smith'),       ('Carla Lopez'),     ('David Kim'),
                               ('Ella Brown'),       ('Frank Zhang'),     ('Grace Miller'),    ('Hassan Ali'),
                               ('Ivy Thompson'),     ('Jonas Fischer'),   ('Kara White'),      ('Liam Patel'),
@@ -71,19 +71,19 @@ INSERT INTO Course(courseID,name,prerequisiteID,startDate,endDate,credits) VALUE
 
 -- ---------- Sample Student_Course completions ----------
 -- Alice (1)
-INSERT INTO Student_Course VALUES (1,101),(1,111),(1,116),(1,104);
+INSERT INTO student_course VALUES (1,101),(1,111),(1,116),(1,104);
 
 -- Bob (2)
-INSERT INTO Student_Course VALUES (2,101),(2,102),(2,111),(2,112),(2,116),(2,117);
+INSERT INTO student_course VALUES (2,101),(2,102),(2,111),(2,112),(2,116),(2,117);
 
 -- Carla (3)
-INSERT INTO Student_Course VALUES (3,101),(3,102),(3,104),(3,106),(3,119);
+INSERT INTO student_course VALUES (3,101),(3,102),(3,104),(3,106),(3,119);
 
 -- David (4)
-INSERT INTO Student_Course VALUES (4,101),(4,104),(4,105),(4,120);
+INSERT INTO student_course VALUES (4,101),(4,104),(4,105),(4,120);
 
 -- … repeat similar  records so every student has 3–6 completions …
-INSERT INTO Student_Course VALUES
+INSERT INTO student_course VALUES
                                (5,101),(5,111),(5,113),
                                (6,101),(6,102),(6,103),(6,118),
                                (7,111),(7,112),(7,121),
