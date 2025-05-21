@@ -12,25 +12,30 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "Schedule")
+@Table(name = "schedule")
 @Getter
 @Setter
 public class Schedule {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private  Long scheduleID;
 
+    @Column(name = "starts_at", nullable = false)
     @JsonFormat(pattern = "HH:mm")
     private LocalTime startsAt;
 
+    @Column(name = "ends_at", nullable = false)
     @JsonFormat(pattern = "HH:mm")
     private LocalTime endsAt;
 
-    public enum DayOfWeek{MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY}
+    public enum Weekdays{MONDAY,TUESDAY,WEDNESDAY,THURSDAY,FRIDAY,SATURDAY,SUNDAY}
 
-    @ElementCollection(targetClass = DayOfWeek.class)
+
+    @ElementCollection(targetClass = Weekdays.class)
     @Enumerated(EnumType.STRING)
     @CollectionTable(name = "schedule_days", joinColumns = @JoinColumn(name = "schedule_id"))
     @Column(name = "day_of_week")
-    private Set<DayOfWeek> daysOfWeek;
+
+    private Set<Weekdays> weekdays;
 }
