@@ -9,5 +9,5 @@ RUN mvn -q clean package -DskipTests
 FROM eclipse-temurin:21-jre
 WORKDIR /opt/app
 COPY --from=builder /app/target/course-planner-*.jar app.jar
-EXPOSE 8080
+EXPOSE 8000
 ENTRYPOINT ["java","-jar","app.jar"]

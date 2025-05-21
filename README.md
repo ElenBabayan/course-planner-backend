@@ -135,7 +135,7 @@ GET /session/550e8400-e29b-41d4-a716-446655440000
 ### 📘 API Documentation
 
 Once the app is running, open:  
-→ [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+→ [http://localhost:8000/swagger-ui.html](http://localhost:8000/swagger-ui.html)
 
 This displays interactive API docs powered by **Swagger UI** and **OpenAPI 3**.
 
@@ -147,7 +147,7 @@ This displays interactive API docs powered by **Swagger UI** and **OpenAPI 3**.
 - Documents query and path parameters
 
 The OpenAPI spec is also available in raw JSON:  
-→ [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+→ [http://localhost:8000/v3/api-docs](http://localhost:8000/v3/api-docs)
 
 ### 🔄 Docker Compose (one-liner)
 

@@ -26,4 +26,4 @@ services:
       SPRING_SECOND_DATASOURCE_USERNAME: planner
       SPRING_SECOND_DATASOURCE_PASSWORD: planner
     ports:
-      - "8080:8080"
+      - "8000:8000"
