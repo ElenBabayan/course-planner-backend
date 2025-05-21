@@ -36,6 +36,11 @@ public class Course {
     private Date startDate;
     @Column(name = "end_date")
     private Date endDate;
+
+    @ManyToOne
+    @JoinColumn(name = "schedule")
+    private Schedule schedule;
+
     private int credits;
 
     // Self-referential many-to-one relationship for prerequisite
