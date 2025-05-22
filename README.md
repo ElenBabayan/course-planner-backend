@@ -11,9 +11,11 @@ Java 21 / Spring Boot 3 service that powers the **Student Course Planner** (Gemi
     * `GET /university/availableCourses/{studentID}` – list courses a student can legally take next
     * `POST /session/createSession` – new chat session (Gemini prompt pre-loaded)
     * `GET /session/{sessionID}` – retrieve session messages
+    * `GET /session/sessions` – list all session IDs
+    * `POST /session/{sessionID}/messages` – add a new message to the session
 * Layered architecture (Controller → Service → Repository) with JPA entities
 * Unit tests (JUnit 5, Mockito)
-* Flyway migrations and `data.sql` with **20 students, 30 courses** seeded
+* Flyway migrations and `data.sql` with **X students, Y courses** seeded
 
 ## Tech Stack
 
@@ -35,7 +37,7 @@ psql -U postgres -c "ALTER ROLE planner CREATEDB;"
 createdb -U planner universitydb
 createdb -U planner applicationdb
 
-# 2. (Optional) load schema & seed data manually
+# 2. Load schema & seed data manually
 psql -U planner -d universitydb    -f src/main/resources/schema-university.sql
 psql -U planner -d universitydb    -f src/main/resources/data-university.sql
 psql -U planner -d applicationdb   -f src/main/resources/schema-application.sql
@@ -47,7 +49,7 @@ psql -U planner -d applicationdb   -f src/main/resources/schema-application.sql
 ## REST API Endpoints & Examples
 
 ### `GET /university/availableCourses/{studentID}`
-
+  
 Returns a list of courses that the student **can take next**, based on:
 
 - Courses not yet completed
@@ -131,7 +133,47 @@ GET /session/550e8400-e29b-41d4-a716-446655440000
   }
 ]
 ```
+---
 
+### `GET /session/sessions`
+
+Retrieves a list of all chat session IDs.
+
+**Request:**
+
+```http
+GET /session/sessions
+```
+
+**Response:**
+
+```json
+  ["550e8400-e29b-41d4-a716-446655440000"]
+```
+
+---
+
+### `POST /session/{sessionID}/messages}`
+
+Adds a new message to the specified session.
+
+**Request:**
+
+```http
+POST /session/{sessionID}/messages
+```
+
+**Response:**
+
+```json
+[
+  {
+    "role": "updated: system",
+    "content": "Updated: You are a university assistant. Based on the list of Courses and StudentProfile, generate an optimized SemesterPlan for the student.",
+    "parts": []
+  }
+]
+```
 ### 📘 API Documentation
 
 Once the app is running, open:  

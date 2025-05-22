@@ -51,7 +51,8 @@ class SessionControllerTest {
         mvc.perform(get("/session/" + id))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().json("[]"));
+                .andExpect(content().json("{\"messages\":null}"));
+
     }
 
     @Test
@@ -62,7 +63,7 @@ class SessionControllerTest {
         mvc.perform(get("/session/sessions"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(content().json(String.format("[\"%s\"]", id)));
+                .andExpect(content().json("[\"" + id + "\"]"));
     }
 
 

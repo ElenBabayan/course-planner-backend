@@ -43,9 +43,8 @@ public class UniversityService {
             .stream()
             .filter(course ->
                 !completedCourseIds.contains(course.getCourseID()) &&
-                    (course.getPrerequisite() == null ||
-                        completedCourseIds.contains(course.getPrerequisite().getCourseID())) &&
-                    (course.getStartDate().after(new Date()))
+                (course.getPrerequisite() == null || completedCourseIds.contains(course.getPrerequisite().getCourseID())) &&
+                (course.getStartDate() == null  || course.getStartDate().after(new Date()))
             )
             .peek(course -> {
                 if (course.getSchedule() != null) {
